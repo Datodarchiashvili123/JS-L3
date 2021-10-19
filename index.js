@@ -61,4 +61,77 @@ console.log('is anyone above 30: ', isAnyoneAbove30);
 
 ///---///
 
-//მეტი ვერ მოვასწარი დენი არ მქონდა :დდდ
+//MY Filter
+const arr = [ 2, 2, 8];
+function myFilter(arr, x){
+  let filteredArr=[];
+  for (let item of arr){
+    if(item === x){
+      filteredArr.push(item);
+    }
+  }
+
+  return filteredArr;
+}
+
+const filteredArr = myFilter(arr, 3);
+console.log('filteredArr', filteredArr);
+//My Every
+
+console.log('every: ', arr.every( x => x !== 2));
+function myEvery(arr, fn){
+  for (let item of arr){
+    if(fn(item)){
+      return true;
+    }
+    else return false;
+  }
+}
+console.log('everyArr', myEvery(arr, x => x !== 2));
+
+// map implementation
+
+// const arr = [1, 2, 3, 4, 5];
+const mappedArr = myMap(arr, (x) => x / 2);
+
+function myMap(arr, fn) {
+  let mappedArr = [];
+
+  for (let item of arr) {
+    mappedArr.push(fn(item));
+  }
+
+  return mappedArr;
+}
+
+//Lecture 4
+
+// add(2)(3);
+
+function add(x){
+    function add2(y){
+      return x+y;
+    }
+    return add2;
+}
+
+console.log(add(2)(3));
+
+
+/*
+შევქმნათ ფუნქცია რომელიც მიიღებს N რაოდენობის არგუმენტებს (number-ებს). 
+ამ ფუნქციამ უნდა დააბრუნოს ფუნქცია, რომელიც მიიღებს ერთ n არგუმენტს.
+მეორე ფუნქციამ უნდა დააბრუნოს პირველი ფუნქციის არგუმენტების გა-n-მაგებული მნიშვნელობების ჯამი.
+*/
+
+multipliedSum(1, 2, 3, 4)(2) // => 20
+
+function multipliedSum(...n){
+  function secondFunction(x){
+     const sum = n.reduce((acc, cur)=> (acc+= cur*x),0);
+    return sum;
+  }
+  return secondFunction;
+}
+
+console.log(multipliedSum(1,2,3)(2));
