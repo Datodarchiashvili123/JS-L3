@@ -1,0 +1,65 @@
+//Lecture 5
+
+// ქოლბექი არის ფუნქცია რომელსაც სხვა ფუნქციას ვაწვდით პარამეტრად,
+// ფუნქციაში გადაწოდებულ სხვა ფუნქციას(პარამეტრად) ეწოდება ქოლბექი.
+
+// What is the use of callback function in JavaScript?
+// It helps us develop asynchronous JavaScript code and keeps us safe from problems and errors. 
+// In JavaScript, the way to create a callback function is to pass it as a parameter to another function, 
+// and then to call it back right after something has happened or some task is completed
+
+//ფუნქციის გამშვები ფუნქცია
+// function run(callback){
+//     callback()
+// }
+
+// run(()=> console.log('hey'));// hey
+
+
+//Promises
+// პრომისი ქმნის ასინქრონულ პროცესებს.
+// პრომისი არის ობიექტი რომელიც, მნიშვნელობას აბრუნებს როცა რაღაც ოპერაცია შესრულდება.
+// პრომისს აქვს სამი სტეიტი, 
+// pendingi: როცა არც მოსულა ველიუ და არც დაფეილდა.
+// ფულფილლედ: მოვიდა რასაც ველოდებოდით(საქსესი)
+// rejected: დაფეილდა.
+// მაგ: const test = new Promise()
+// პრომისს გადაეცემა 2 პარამეტრი : resolve, reject( სახელებს არ აქვს მნიშვნელობა, თანმიმდევრობას კი. პირველი არის რესოლვი, მეორე რეჯექთი)
+// const test = new Promise((resolve, reject)=>{
+// setTimeout(() => {
+//    resolve("resolved!");
+// }, 3000); 
+// });
+
+// resolved.then(x => console.log(x));
+
+//then-s პირველ პარამეტრად გადაეცემა საქსესი, მეორე პარამეტრად გადაეცემა ერორი.
+// მაგალითად
+
+// const rejected = new Promise((resolve, reject)=>{
+//     setTimeout(() => {
+//        reject("rejected!! tes");
+//     }, 3000);
+// });
+
+// console.log(1);
+// rejected.then(
+//     (res) =>(console.log(res)),
+//     (err) => console.log(err)
+// );
+// console.log(2);
+
+// catch-is ukan weria es
+// rejected.then(
+//     undefined,
+//     (err) => console.log(err)
+// );
+//it is just sintactic shugar
+
+
+//მაგდონალდსის ბურგერის შეკვეთის მაგალითი;
+// resolve არის ჩეკი(ქვითარი), ანუ პრომისი.
+// ბურგერი მოდის then-ში, ანუ დაპირებული მნიშვნელობა.
+
+//საინტერესოა
+// ბექენდიდან მოდის პრომისი, რომელსაც ვუსმენთ then ით და ვიღებთ მნიშვნელობას.
